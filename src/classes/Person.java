@@ -4,8 +4,18 @@ public class Person {
 	private String _name;
 	private String _surname;
 	private String _birth;
-	private Boolean _sex;
-	private float salary;
+	private int _sex;
+	private int _salary;
+	
+	
+	public Person(String name, String surname, String birth, int sex, int salary)
+	{
+		this._name = name;
+		this._birth = birth;
+		this._salary = salary;
+		this._sex = sex;
+		this._surname = surname;
+	}
 	
 	public String get_name() {
 		return _name;
@@ -25,16 +35,16 @@ public class Person {
 	public void set_birth(String _birth) {
 		this._birth = _birth;
 	}
-	public Boolean get_sex() {
+	public int get_sex() {
 		return _sex;
 	}
-	public void set_sex(Boolean _sex) {
+	public void set_sex(int _sex) {
 		this._sex = _sex;
 	}
-	public float getSalary() {
-		return salary;
+	public int get_salary() {
+		return _salary;
 	}
-	public void setSalary(float salary) {
-		this.salary = salary;
+	public void set_salary(int salary) {
+		this._salary = salary;
 	}
 }
