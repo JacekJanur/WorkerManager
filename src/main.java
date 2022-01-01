@@ -8,6 +8,9 @@ import classes.PersonPrint;
 import classes.PersonPrintToConsole;
 import classes.PersonSave;
 import classes.PersonSaveToDB;
+import classes.Responsibility;
+import classes.ResponsibilitySave;
+import classes.ResponsibilitySaveToDB;
 
 public class main
 {
@@ -26,6 +29,10 @@ public class main
         
         DatabasePrint DBP = new DatabasePrint(DBC, new DatabasePrintPerson());
         DBP.print();
+        
+        ResponsibilitySave resS = new ResponsibilitySave(new Responsibility("Cleaning office"), new ResponsibilitySaveToDB(DBC));
+        resS.save();
+        
         
         DBC.closeConnection();
     }
