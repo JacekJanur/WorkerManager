@@ -8,6 +8,7 @@ import classes.DatabasePrintPersonResponsibilities;
 import classes.DatabasePrintResponsibilities;
 import classes.DatabaseScheme;
 import classes.Person;
+import classes.PersonInputter;
 import classes.PersonPrint;
 import classes.PersonPrintToConsole;
 import classes.PersonResponsibilitySave;
@@ -31,22 +32,12 @@ public class main
         PersonSave personS = new PersonSave(new Person("Jacek", "Janur", "1997-10-05", 1, 4000), new PersonSaveToDB(DBC));
         personS.Save();
         
-//        PersonPrint personP = new PersonPrint(new Person("Jacek", "Janur", "1997-10-05", 1, 4000), new PersonPrintToConsole());
-//        personP.print();
-//        
-//        DatabasePrint DBP = new DatabasePrint(DBC, new DatabasePrintPerson());
-//        DBP.print();
         
         new ResponsibilitySave(new Responsibility("Cleaning office"), new ResponsibilitySaveToDB(DBC)).save();
         new ResponsibilitySave(new Responsibility("Cleaning Toilets"), new ResponsibilitySaveToDB(DBC)).save();
         
         new PersonResponsibilitySave(1, 1).save(DBC);
         new PersonResponsibilitySave(1, 2).save(DBC);
-        
-//        DBP = new DatabasePrint(DBC, new DatabasePrintResponsibilities());
-//        DBP.print();
-        
-//        new DatabasePrint(DBC, new DatabasePrintPersonResponsibilities()).print();
         
         Scanner keyboard = new Scanner(System.in);
         boolean lo = true;
@@ -56,7 +47,8 @@ public class main
         			+ "1: Show all workers \n"
         			+ "2: Show all responsibilities \n"
         			+ "3: Show workers responsibilities \n"
-        			+ "4: Quit \n");
+        			+ "4: Add worker \n"
+        			+ "5: Quit \n");
         	System.out.print("Your number: ");
         	int number = keyboard.nextInt();
         	System.out.print("------ \n");
@@ -71,7 +63,13 @@ public class main
 	        	case 3:
 	        		new DatabasePrint(DBC, new DatabasePrintPersonResponsibilities()).print();
 	        		break;
-        		case 4: 
+	        	case 4:
+	        		PersonInputter personIN = new PersonInputter();
+	        		Person newPerson = personIN.input();
+	        		new PersonSave(newPerson, new PersonSaveToDB(DBC)).Save();
+	        		break;
+	        	
+	        	case 5: 
         			lo = false;
         			break;
         	}
