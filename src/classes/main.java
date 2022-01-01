@@ -34,7 +34,8 @@ public class main
         			+ "3: Show workers responsibilities \n"
         			+ "4: Add worker \n"
         			+ "5: Add responsibility \n"
-        			+ "6: Quit \n");
+        			+ "6: Add responsibility to worker \n"
+        			+ "7: Quit \n");
         	System.out.print("------ \n");
         	System.out.print("Your number: ");
         	
@@ -60,7 +61,14 @@ public class main
         			Responsibility resp = respIN.input();
         			new ResponsibilitySave(resp, new ResponsibilitySaveToDB(DBC)).save();
         			break;
-	        	case 6: 
+	        	case 6:
+	        		System.out.print("Worker id: ");
+	        		int id_worker = Integer.parseInt(keyboard.nextLine());
+	        		System.out.print("Responsibility id: ");
+	        		int id_resp = Integer.parseInt(keyboard.nextLine());
+	        		new PersonResponsibilitySave(id_worker, id_resp).save(DBC);
+	        		break;
+	        	case 7: 
         			lo = false;
         			break;
         	}
