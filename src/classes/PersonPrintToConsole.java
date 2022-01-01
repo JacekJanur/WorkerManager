@@ -3,6 +3,8 @@ package classes;
 import interfaces.IPersonPrint;
 
 public class PersonPrintToConsole implements IPersonPrint{
+	
+	@Override
 	public void print(Person person)
 	{
 		String toPrint = String.format("Name: %s \n"

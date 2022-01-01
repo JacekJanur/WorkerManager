@@ -1,5 +1,7 @@
 
 import classes.DatabaseConnection;
+import classes.DatabasePrint;
+import classes.DatabasePrintPerson;
 import classes.DatabaseScheme;
 import classes.Person;
 import classes.PersonPrint;
@@ -21,6 +23,9 @@ public class main
         
         PersonPrint personP = new PersonPrint(new Person("Jacek", "Janur", "1997-10-05", 1, 4000), new PersonPrintToConsole());
         personP.print();
+        
+        DatabasePrint DBP = new DatabasePrint(DBC, new DatabasePrintPerson());
+        DBP.print();
         
         DBC.closeConnection();
     }
