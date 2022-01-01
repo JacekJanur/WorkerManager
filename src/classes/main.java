@@ -1,27 +1,13 @@
+package classes;
 
 import java.util.Scanner;
-
-import classes.DatabaseConnection;
-import classes.DatabasePrint;
-import classes.DatabasePrintPerson;
-import classes.DatabasePrintPersonResponsibilities;
-import classes.DatabasePrintResponsibilities;
-import classes.DatabaseScheme;
-import classes.Person;
-import classes.PersonInputter;
-import classes.PersonPrint;
-import classes.PersonPrintToConsole;
-import classes.PersonResponsibilitySave;
-import classes.PersonSave;
-import classes.PersonSaveToDB;
-import classes.Responsibility;
-import classes.ResponsibilitySave;
-import classes.ResponsibilitySaveToDB;
 
 
 
 public class main
 {
+	static final Scanner keyboard = new Scanner(System.in);
+	
 	public static void main(String[] args) throws ClassNotFoundException{
         DatabaseConnection DBC = new DatabaseConnection();
         DBC.openConnection();
@@ -39,7 +25,7 @@ public class main
         new PersonResponsibilitySave(1, 1).save(DBC);
         new PersonResponsibilitySave(1, 2).save(DBC);
         
-        Scanner keyboard = new Scanner(System.in);
+        //Scanner keyboard = new Scanner(System.in);
         boolean lo = true;
         while(lo)
         {
