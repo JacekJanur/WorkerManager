@@ -6,6 +6,7 @@ import classes.DatabaseScheme;
 import classes.Person;
 import classes.PersonPrint;
 import classes.PersonPrintToConsole;
+import classes.PersonResponsibilitySave;
 import classes.PersonSave;
 import classes.PersonSaveToDB;
 import classes.Responsibility;
@@ -32,7 +33,11 @@ public class main
         
         ResponsibilitySave resS = new ResponsibilitySave(new Responsibility("Cleaning office"), new ResponsibilitySaveToDB(DBC));
         resS.save();
+        resS = new ResponsibilitySave(new Responsibility("Cleaning Toilets"), new ResponsibilitySaveToDB(DBC));
+        resS.save();
         
+        new PersonResponsibilitySave(1, 1).save(DBC);
+        new PersonResponsibilitySave(1, 2).save(DBC);
         
         DBC.closeConnection();
     }
