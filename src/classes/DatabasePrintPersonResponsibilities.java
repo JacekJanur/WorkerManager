@@ -23,7 +23,8 @@ public class DatabasePrintPersonResponsibilities implements IDatabasePrint{
 		    	System.out.println(rs.getInt("id_person") +  "\t" + 
 	                              rs.getString("name") + "\t" +
 	                              rs.getString("surname") + "\t" +
-	                              rs.getString("responsibility"));
+	                              rs.getString("responsibility") + "\t" +
+	                              rs.getString("id_responsibility"));
 	        }
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
