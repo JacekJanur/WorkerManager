@@ -25,7 +25,6 @@ public class main
         new PersonResponsibilitySave(1, 1).save(DBC);
         new PersonResponsibilitySave(1, 2).save(DBC);
         
-        //Scanner keyboard = new Scanner(System.in);
         boolean lo = true;
         while(lo)
         {
@@ -34,10 +33,12 @@ public class main
         			+ "2: Show all responsibilities \n"
         			+ "3: Show workers responsibilities \n"
         			+ "4: Add worker \n"
-        			+ "5: Quit \n");
-        	System.out.print("Your number: ");
-        	int number = keyboard.nextInt();
+        			+ "5: Add responsibility \n"
+        			+ "6: Quit \n");
         	System.out.print("------ \n");
+        	System.out.print("Your number: ");
+        	
+        	int number = Integer.parseInt(keyboard.nextLine());
         	switch(number)
         	{
 	        	case 1:
@@ -54,8 +55,12 @@ public class main
 	        		Person newPerson = personIN.input();
 	        		new PersonSave(newPerson, new PersonSaveToDB(DBC)).Save();
 	        		break;
-	        	
 	        	case 5: 
+        			ResponsibilityInputter respIN = new ResponsibilityInputter();
+        			Responsibility resp = respIN.input();
+        			new ResponsibilitySave(resp, new ResponsibilitySaveToDB(DBC)).save();
+        			break;
+	        	case 6: 
         			lo = false;
         			break;
         	}

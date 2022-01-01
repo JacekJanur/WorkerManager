@@ -1,10 +1,10 @@
 package classes;
 
+import interfaces.IInputter;
 
-public class PersonInputter {
+public class PersonInputter implements IInputter<Person>{
 	public Person input()
 	{
-		//Scanner keyboard = new Scanner(System.in);
 		System.out.print("\nName: ");
 		String name = main.keyboard.nextLine();
 		System.out.print("\nSurname: ");
@@ -14,10 +14,10 @@ public class PersonInputter {
 		String birth = main.keyboard.nextLine();
 		
 		System.out.print("\nSex (0-female, 1-male): ");
-		int sex = main.keyboard.nextInt();
+		int sex = Integer.parseInt(main.keyboard.nextLine());
 		
 		System.out.print("\nSalary: ");
-		int salary = main.keyboard.nextInt();
+		int salary = Integer.parseInt(main.keyboard.nextLine());
 		return new Person(name, surname, birth, sex, salary);
 	}
 }
