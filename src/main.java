@@ -2,6 +2,8 @@
 import classes.DatabaseConnection;
 import classes.DatabasePrint;
 import classes.DatabasePrintPerson;
+import classes.DatabasePrintPersonResponsibilities;
+import classes.DatabasePrintResponsibilities;
 import classes.DatabaseScheme;
 import classes.Person;
 import classes.PersonPrint;
@@ -38,6 +40,12 @@ public class main
         
         new PersonResponsibilitySave(1, 1).save(DBC);
         new PersonResponsibilitySave(1, 2).save(DBC);
+        
+        DBP = new DatabasePrint(DBC, new DatabasePrintResponsibilities());
+        DBP.print();
+        
+        DBP = new DatabasePrint(DBC, new DatabasePrintPersonResponsibilities());
+        DBP.print();
         
         DBC.closeConnection();
     }

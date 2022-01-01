@@ -7,10 +7,12 @@ import java.sql.Statement;
 
 import interfaces.IDatabasePrint;
 
-public class DatabasePrintResponsibilities implements IDatabasePrint {
+public class DatabasePrintPersonResponsibilities implements IDatabasePrint{
+
 	@Override
 	public void print(DatabaseConnection DBC) {
-		String sql = "SELECT * FROM responsibilities";
+		String sql = "SELECT * FROM "
+				+ "persons_responsibilities natural join persons natural join responsibilities";
 		Connection connection = DBC.getConnection();	
 		Statement stmt;
 		try {
@@ -18,12 +20,16 @@ public class DatabasePrintResponsibilities implements IDatabasePrint {
 	        ResultSet rs = stmt.executeQuery(sql);
 		    // loop through the result set
 		    while (rs.next()) {
-		    	System.out.println(rs.getInt("id_responsibility") +  "\t" + 
+		    	System.out.println(rs.getInt("id_person") +  "\t" + 
+	                              rs.getString("name") + "\t" +
+	                              rs.getString("surname") + "\t" +
 	                              rs.getString("responsibility"));
 	        }
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+		
 	}
+
 }
