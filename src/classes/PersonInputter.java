@@ -11,10 +11,10 @@ public class PersonInputter implements IInputter<Person>{
 		String surname = main.keyboard.nextLine();
 		
 		System.out.print("\nBirth (YYYY-MM-DD): ");
-		String birth = main.keyboard.nextLine();
+		String birth = PersonInputterValidatorBirth.tryBirth();
 		
 		System.out.print("\nSex (0-female, 1-male): ");
-		int sex = ParseIntValidator.tryParse(main.keyboard.nextLine());
+		int sex = PersonInputterValidatorSex.trySex();
 		
 		System.out.print("\nSalary: ");
 		int salary = ParseIntValidator.tryParse(main.keyboard.nextLine());
