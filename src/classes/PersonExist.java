@@ -5,7 +5,8 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
-public class PersonExist {
+
+public class PersonExist{
 	public static boolean check(Connection connection, int id_person) 
 	{
 		boolean exist = false;
@@ -28,4 +29,5 @@ public class PersonExist {
 		
 		return exist;
 	}
+
 }

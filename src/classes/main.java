@@ -36,12 +36,14 @@ public class main
         			+ "5: Delete worker \n"
         			+ "6: Add responsibility \n"
         			+ "7: Add responsibility to worker \n"
-        			+ "8: Quit \n");
+        			+ "8: Delete responsibility from worker \n"
+        			+ "9: Quit \n");
         	System.out.print("------ \n");
         	System.out.print("Your number: ");
         	
         	int number = ParseIntValidator.tryParse(keyboard.nextLine());
         	int id_worker;
+        	int id_resp;
         	switch(number)
         	{
 	        	case 1:
@@ -72,10 +74,17 @@ public class main
 	        		System.out.print("Worker id: ");
 	        		id_worker = ParseIntValidator.tryParse(keyboard.nextLine());
 	        		System.out.print("Responsibility id: ");
-	        		int id_resp = ParseIntValidator.tryParse(keyboard.nextLine());
+	        		id_resp = ParseIntValidator.tryParse(keyboard.nextLine());
 	        		new PersonResponsibilitySave(id_worker, id_resp).save(DBC);
 	        		break;
-	        	case 8: 
+	        	case 8:
+	        		System.out.print("Worker id: ");
+	        		id_worker = ParseIntValidator.tryParse(keyboard.nextLine());
+	        		System.out.print("Responsibility id: ");
+	        		id_resp = ParseIntValidator.tryParse(keyboard.nextLine());
+	        		new PersonResponsibilityDelete(id_worker, id_resp, new PersonResponsibilityDeleteFromDB(DBC)).delete();
+	        		break;
+	        	case 9: 
         			lo = false;
         			break;
         	}
