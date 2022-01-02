@@ -18,15 +18,22 @@ public class PersonDeleteFromDB implements IPersonDelete {
 	@Override
 	public void delete(int id_person) {
 		String sql = "DELETE FROM PERSONS WHERE id_person = "+id_person;
-		System.out.print(sql);
 		Connection connection = this._DBC.getConnection();	
-		Statement stmt;
-		try {
-			stmt = connection.createStatement();
-	        stmt.executeUpdate(sql);
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+		
+		if(PersonExist.check(connection, id_person))
+		{
+			Statement stmt;
+			try {
+				stmt = connection.createStatement();
+		        stmt.executeUpdate(sql);
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+		else
+		{
+			System.out.print("\nNo worker in DB with id: "+id_person+"\n");
 		}
 
 	}

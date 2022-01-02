@@ -19,15 +19,21 @@ public class PersonResponsibilitySave {
 		Connection connection = DBC.getConnection();	
 		Statement statement;
 		if(PersonResponsibilityValidator.check(connection, this._id_person, this._id_responsibility))
-		try {
-			statement = connection.createStatement();
-	        statement.setQueryTimeout(30);  // set timeout to 30 sec.
-	        String query = String.format("insert into persons_responsibilities(id_person, id_responsibility) "
-	        		+ "values('%d', "
-	        		+ "'%d')", this._id_person, this._id_responsibility);
-	        statement.executeUpdate(query);
-		}catch (SQLException e) {
-			e.printStackTrace();
+		{
+			try {
+				statement = connection.createStatement();
+		        statement.setQueryTimeout(30);  // set timeout to 30 sec.
+		        String query = String.format("insert into persons_responsibilities(id_person, id_responsibility) "
+		        		+ "values('%d', "
+		        		+ "'%d')", this._id_person, this._id_responsibility);
+		        statement.executeUpdate(query);
+			}catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+		else
+		{
+			System.out.print("\nWrong data.\n");
 		}
 	}
 }
