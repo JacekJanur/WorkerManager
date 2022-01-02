@@ -6,7 +6,8 @@ import java.sql.Connection;
 public class PersonResponsibilityValidator {
 	public static boolean check(Connection connection, int id_person, int id_resp) 
 	{
-		if(PersonResponsibilityExist.check(connection, id_person, id_resp) && PersonExist.check(connection, id_person))
+		if(PersonResponsibilityExist.check(connection, id_person, id_resp) && PersonExist.check(connection, id_person)
+				&& ResponsibilityExist.check(connection, id_resp))
 		{
 			return true;
 		}
