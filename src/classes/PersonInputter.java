@@ -14,10 +14,10 @@ public class PersonInputter implements IInputter<Person>{
 		String birth = main.keyboard.nextLine();
 		
 		System.out.print("\nSex (0-female, 1-male): ");
-		int sex = Integer.parseInt(main.keyboard.nextLine());
+		int sex = ParseIntValidator.tryParse(main.keyboard.nextLine());
 		
 		System.out.print("\nSalary: ");
-		int salary = Integer.parseInt(main.keyboard.nextLine());
+		int salary = ParseIntValidator.tryParse(main.keyboard.nextLine());
 		return new Person(name, surname, birth, sex, salary);
 	}
 }

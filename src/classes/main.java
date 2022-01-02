@@ -40,7 +40,7 @@ public class main
         	System.out.print("------ \n");
         	System.out.print("Your number: ");
         	
-        	int number = Integer.parseInt(keyboard.nextLine());
+        	int number = ParseIntValidator.tryParse(keyboard.nextLine());
         	int id_worker;
         	switch(number)
         	{
@@ -60,7 +60,7 @@ public class main
 	        		break;
 	        	case 5:
 	        		System.out.print("Worker to delete id: ");
-	        		id_worker = Integer.parseInt(keyboard.nextLine());
+	        		id_worker = ParseIntValidator.tryParse(keyboard.nextLine());
 	        		new PersonDelete(id_worker, new PersonDeleteFromDB(DBC)).delete();
 	        		break;
 	        	case 6: 
@@ -70,9 +70,9 @@ public class main
         			break;
 	        	case 7:
 	        		System.out.print("Worker id: ");
-	        		id_worker = Integer.parseInt(keyboard.nextLine());
+	        		id_worker = ParseIntValidator.tryParse(keyboard.nextLine());
 	        		System.out.print("Responsibility id: ");
-	        		int id_resp = Integer.parseInt(keyboard.nextLine());
+	        		int id_resp = ParseIntValidator.tryParse(keyboard.nextLine());
 	        		new PersonResponsibilitySave(id_worker, id_resp).save(DBC);
 	        		break;
 	        	case 8: 
